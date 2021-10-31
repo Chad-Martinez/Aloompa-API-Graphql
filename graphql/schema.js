@@ -59,6 +59,7 @@ module.exports = buildSchema(`
         stage(id: ID!): Stage!
         stages: StageData!
         searchStagesByName(name: String!): StageData!
+        listStagesByApp(appId: ID!): StageData!
         getStageByEvent(eventId: ID!): Stage!
         event(id: ID!): Event!
         events: EventData!

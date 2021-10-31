@@ -314,4 +314,30 @@ module.exports = {
       throw error;
     }
   },
+  listStagesByApp: async function ({ appId }, req) {
+    try {
+      const events = await Event.find({ appId: appId });
+      const mappedStageIds = events.map((event) => event.stageId.toString());
+      const uniqueStageIds = mappedStageIds.filter(
+        (stageId, i, arr) => arr.indexOf(stageId) === i
+      );
+      const mappedStages = await Promise.all(
+        uniqueStageIds.map(async (stageId) => {
+          const stageInfo = await Stage.findById(stageId);
+          return stageInfo;
+        })
+      );
+      return {
+        stages: mappedStages.map((stage) => {
+          return {
+            ...stage._doc,
+            _id: stage._id.toString(),
+          };
+        }),
+      };
+    } catch (error) {
+      error.statusCode = 500;
+      throw error;
+    }
+  },
 };
