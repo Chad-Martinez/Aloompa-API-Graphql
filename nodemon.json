@@ -1,7 +1,7 @@
 {
     "env": {
-        "MONGO_USER": "Chad",
-        "MONGO_PASSWORD": "5397iracapo",
-        "MONGO_DEFAULT_DATABASE": "aloompa"
+        "MONGO_USER": "ENTER_USERNAME",
+        "MONGO_PASSWORD": "ENTER_PASSWORD",
+        "MONGO_DEFAULT_DATABASE": "ENTER_DATABASE_NAME"
     }
 }
